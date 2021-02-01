@@ -206,6 +206,143 @@ function {
 
 ### на алгоритмы и структуры данных
 ---
+Напиши функцию, которая "перемешивает" массив
+
+ответ
+```javascript
+function fisherYates(originalArray) {
+  // Clone array from preventing original array from modification (for testing purpose).
+  const array = originalArray.slice(0);
+
+  for (let i = (array.length - 1); i > 0; i -= 1) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+  }
+
+  return array;
+}
+```
+
+---
+
+Напиши функцию, которая объединяет два отсортированных массива за O(n)
+ответ
+```javascript
+function mergeSortedArrays(a, b) {
+  var result = [], indexA = 0, indexB = 0;
+
+  while (result.length < a.length + b.length) {
+    if (indexB === b.length) {
+      return result.concat(a.slice(indexA));
+    }
+
+    if (indexA === a.length) {
+      return result.concat(b.slice(indexB));
+    }
+
+    if (a[indexA] < b[indexB]) {
+      result.push(a[indexA]);
+      indexA++;
+    } else if (a[indexA] > b[indexB]) {
+      result.push(b[indexB]);
+      indexB++;
+    } else if (a[indexA] === b[indexB]) {
+      result.push(a[indexA], b[indexB]);
+      indexA++;
+      indexB++;
+    }
+  }
+
+  return result;
+}
+
+console.log(
+  mergeSortedArrays(
+    [2, 4, 6, 8, 9, 10],
+    [1, 3, 5, 7, 9]
+  )
+);
+```
+
+---
+
+Напишите функцию расчета числа Фибоначчи.
+ответ
+```javascript
+function fibonacci(position) {
+  if (position === 0) {
+    return 0;
+  }
+
+  if (position === 1 || position === 2) {
+    return 1;
+  }
+
+  return position < 0
+    ? fibonacci(position + 2) - fibonacci(position + 1)
+    : fibonacci(position - 1) + fibonacci(position - 2);
+}
+
+var time1 = performance.now();
+console.log(fibonacci(30));
+var time2 = performance.now();
+
+console.log((time2 - time1).toFixed(2));
+```
+
+Оптимизируйте функцию расчета числа Фибоначчи.
+```javascript
+var cache = {};
+
+function fibonacci(position) {
+  if (position === 0) {
+    return 0;
+  }
+
+  if (position === 1 || position === 2) {
+    return 1;
+  }
+
+  if (cache[position] === undefined) {
+    cache[position] = position < 0
+      ? fibonacci(position + 2) - fibonacci(position + 1)
+      : fibonacci(position - 1) + fibonacci(position - 2);
+  }
+
+  return cache[position];
+}
+
+/*
+  Так как расчет значений дублируется, это можно оптимизировать, закешировав эти значения
+*/
+
+var time1 = performance.now();
+console.log(fibonacci(30));
+var time2 = performance.now();
+
+console.log((time2 - time1).toFixed(2));
+```
+
+---
+Дана не отсортированная последовательность чисел от 1 до 100. Одно из чисел пропущено. Найдите пропущенное число за минимальное кол-во проходов.
+
+```javascript
+function getMissingInteger(integersArray, from, to) {
+  for (var currentSum = 0, i = 0; i < integersArray.length; i++) {
+    currentSum += integersArray[i];
+  }
+
+  var maxSum = (to * (to + 1)) / 2;
+  var minSum = (from * (from - 1)) / 2;
+
+  return maxSum - minSum - currentSum;
+}
+```
+
+---
+
+
+---
 Отсортируй массив [0, 1, 0, 1, 0, 0, 1, 1, 0] так, чтобы слева были нули, а справа единицы, не используя метод sort и сделав сортировку максимально быстрой
 
 ---
