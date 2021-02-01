@@ -106,12 +106,18 @@ console.log('3')
 
 ---
 
-### на конструкторы
+### на конструкторы, прототипы
 Напиши конструктор Person, чтобы при вызове fullName в консоли было ‘Alex Petrov’
 ```javascript
 const person = new Person('Alex', 'Petrov')
 const name = person.fullName()
 ```
+
+---
+
+Напишите простейшую реализацию метода Object.create
+
+---
 
 ### на классы
 Перепиши классы с наследованием в код на ES5
