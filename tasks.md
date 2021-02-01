@@ -128,6 +128,35 @@ console.log('3')
 
 ---
 
+```javascript
+var button = document.getElementById('button');
+
+button.addEventListener('click', () => {
+  Promise.resolve().then(() => { console.log('microtask 1') });
+  console.log('handler 1');
+});
+
+button.addEventListener('click', () => {
+  Promise.resolve().then(() => { console.log('microtask 2') });
+  console.log('handler 2');
+});
+
+// что выведется при нажатии кнопки пользователем?
+/*
+  Так как после выполнения 'handler 1' стек очищается запускается 'microtask 1'
+  После чего аналогично отрабатывает второй хэндлер
+*/
+
+// что выведется при вызове button.click()?
+/*
+  В случае эмуляции, button.click() занимает стек, микротаски отработают позже, когда очистится стек
+*/
+
+button.click();
+```
+
+---
+
 ### на конструкторы, прототипы
 Напиши конструктор Person, чтобы при вызове fullName в консоли было ‘Alex Petrov’
 ```javascript
