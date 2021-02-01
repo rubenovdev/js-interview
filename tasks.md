@@ -16,6 +16,22 @@ console.log(foo.x);
   console.log(typeof (1 / []))
 ```
 
+---
+
+Что вернется в каждом из этих случаев?
+```
+false == 0
+false == ''
+null == 0
+null <= 0
+
+typeof undefined
+typeof null
+typeof {}
+```
+
+---
+
 ### на замыкание
 ```javascript
 var i = 0
