@@ -11,6 +11,18 @@ foo.x = foo = {n: 2};
 console.log(foo.x);
 ```
 
+---
+
+Что вернет вызов этой функции и почему?
+
+```javascript
+(function(){
+    return [2,2,2,2].map(parseInt)
+})()
+```
+
+---
+
 ### На типы данных, преобразования
 ```javascript
   console.log(typeof (1 / []))
