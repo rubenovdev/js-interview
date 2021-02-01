@@ -227,6 +227,8 @@ Function Expression в сравнении с Function Declaration
 
 Что такое proxy объект
 
+Различия монолитных и атомарных SPA
+
 
 
 # React
@@ -274,6 +276,10 @@ Function Expression в сравнении с Function Declaration
 Работал ли с iframe?
 
 В чем разница между HTML5 и HTML4
+
+Атрибут prefetch, preload, autofocus
+
+Особенности различных браузеров (IE10+)
 
 
 # Задачи
